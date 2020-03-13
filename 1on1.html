@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>WebSocket Signaling 1to1</title>
+</head>
+<body>
+  <button type="button" onclick="startVideo();">Start Video</button>
+  <button type="button" onclick="stopVideo();">Stop Video</button>
+  &nbsp;
+  <button type="button" onclick="connect();">Connect</button>
+  <button type="button" onclick="hangUp();">Hang Up</button> 
+  <div>
+    <video id="local_video" autoplay style="width: 20%; height: 20%; border: 1px solid black;"></video>
+    <video id="remote_video" autoplay style="width: 70%; height: 30%; border: 1px solid black;"></video>
+  </div>
+</body>
+<script src='video.js'></script>
+<script src='signaling.js'></script>
+
+</html>
