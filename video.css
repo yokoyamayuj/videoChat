@@ -1,0 +1,13 @@
+button {
+  display      : inline-block;
+  border-radius: 50%;                  
+  box-shadow   : 6px 6px 3px #666666;  
+  cursor       : pointer;
+  transition   : .3s;
+  color        : blueviolet; 
+  font :
+}
+button:hover {
+  box-shadow   : none;                
+  border-radius: 89%;                    
+}

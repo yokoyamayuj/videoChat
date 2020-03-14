@@ -12,7 +12,19 @@
   // ---------------------- media handling ----------------------- 
   // start local video
   function startVideo() {
-    getDeviceStream({video: true, audio: true})
+    getDeviceStream({video: true, audio: false})
+    .then(function (stream) { // success
+      localStream = stream;
+      playVideo(localVideo, stream);
+    }).catch(function (error) { // error
+      console.error('getUserMedia error:', error);
+      return;
+    });
+  }
+
+   // start local video
+   function startScreenShare() {
+    getScreenStream({video: true, audio: false})
     .then(function (stream) { // success
       localStream = stream;
       playVideo(localVideo, stream);
@@ -49,6 +61,22 @@
       console.log('wrap navigator.getUserMadia with Promise');
       return new Promise(function(resolve, reject){    
         navigator.getUserMedia(option,
+          resolve,
+          reject
+        );
+      });      
+    }
+  }
+
+  function getScreenStream(option) {
+    if ('getDisplayMedia' in navigator.mediaDevices) {
+      console.log('navigator.mediaDevices.getDisplayMedia');
+      return navigator.mediaDevices.getDisplayMedia(option);
+    }
+    else {
+      console.log('wrap navigator.getDisplayMedia with Promise');
+      return new Promise(function(resolve, reject){    
+        navigator.getDisplayMedia(option,
           resolve,
           reject
         );
